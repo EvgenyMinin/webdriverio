@@ -7,6 +7,10 @@ class Internet {
     return $("h2");
   }
 
+  get h3ItemHeader() {
+    return $("h3");
+  }
+
   get pageFooter() {
     return $("#page-footer");
   }
@@ -17,6 +21,14 @@ class Internet {
 
   get childElements() {
     return this.parent.$$("li");
+  }
+
+  get firstLink() {
+    return $("ul li:nth-child(1) a");
+  }
+
+  link(index) {
+    return $(`ul li:nth-child(${index}) a`);
   }
 
   specificChildElement(index) {
@@ -30,18 +42,33 @@ class Internet {
   }
 
   getSpecificElementText(index) {
-    console.log(this.specificChildElement(index).getText());
+    this.specificChildElement(index).waitForDisplayed();
+    return this.specificChildElement(index).getText();
   }
 
-  get firstLink() {
-    return $("ul li:nth-child(1) a");
+  getCheckboxes(index) {
+    console.log(index);
+    return $(`#checkboxes input:nth-child(${index})`);
   }
 
   clickOnLink() {
     if (this.firstLink.isDisplayed() === true) {
       this.firstLink.click();
     }
-    browser.pause(5000);
+    this.h3ItemHeader.waitForDisplayed();
+    browser.pause(2000);
+  }
+
+  clickLink(index) {
+    this.link(index).waitForDisplayed();
+    this.link(index).click();
+    browser.pause(2000);
+  }
+
+  clickCheckbox(index) {
+    this.getCheckboxes(index).waitForDisplayed();
+    this.getCheckboxes(index).click();
+    browser.pause(2000);
   }
 }
 

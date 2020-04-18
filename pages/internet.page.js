@@ -27,6 +27,14 @@ class Internet {
     return $("ul li:nth-child(1) a");
   }
 
+  get username() {
+    return $("#username");
+  }
+
+  get password() {
+    return $("#password");
+  }
+
   link(index) {
     return $(`ul li:nth-child(${index}) a`);
   }
@@ -56,19 +64,39 @@ class Internet {
       this.firstLink.click();
     }
     this.h3ItemHeader.waitForDisplayed();
-    browser.pause(2000);
+    browser.pause(1000);
   }
 
   clickLink(index) {
     this.link(index).waitForDisplayed();
     this.link(index).click();
-    browser.pause(2000);
+    browser.pause(1000);
   }
 
   clickCheckbox(index) {
     this.getCheckboxes(index).waitForDisplayed();
     this.getCheckboxes(index).click();
-    browser.pause(2000);
+    browser.pause(1000);
+  }
+
+  /**
+   * Enter the username into the field
+   * @param {String} value username to be entered
+   */
+  enterUsername(value) {
+    this.username.waitForDisplayed();
+    this.username.setValue(value);
+    browser.pause(1000);
+  }
+
+  /**
+   * Enter the password into the field
+   * @param {String} value password to be entered
+   */
+  enterPassword(value) {
+    this.password.waitForDisplayed();
+    this.password.setValue(value);
+    browser.pause(1000);
   }
 }
 

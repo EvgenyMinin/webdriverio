@@ -24,4 +24,21 @@ describe("Test element actions", () => {
     internetPage.clickCheckbox(1);
     expect(internetPage.getCheckboxes(1).isSelected()).equals(false);
   });
+
+  it("Should login", () => {
+    browser.url(`${browser.options.baseUrl}/login`);
+    internetPage.enterUsername("Johnny");
+    assert.equal("Johnny", internetPage.username.getValue());
+    internetPage.enterPassword("12345678");
+    assert.equal("12345678", internetPage.password.getValue());
+  });
+
+  it("Should clear Login", () => {
+    internetPage.username.click();
+    internetPage.username.clearValue();
+    assert.equal("", internetPage.username.getValue());
+    internetPage.password.click();
+    internetPage.password.clearValue();
+    assert.equal("", internetPage.password.getValue());
+  });
 });

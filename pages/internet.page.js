@@ -67,6 +67,18 @@ class Internet {
     return $("#droppable p");
   }
 
+  get dropdownMenu() {
+    return $("#dropdown");
+  }
+
+  get dropdownMenuOption1() {
+    return $("#dropdown option:nth-child(2)");
+  }
+
+  get dropdownMenuOption2() {
+    return $("#dropdown option:nth-child(3)");
+  }
+
   figures(index) {
     return $(`.example .figure:nth-child(${index}) img`);
   }
@@ -203,6 +215,24 @@ class Internet {
   dragDraggableToDroppable() {
     this.draggable.waitForDisplayed();
     this.draggable.dragAndDrop(this.droppable);
+  }
+
+  clickDropdownMenu() {
+    this.dropdownMenu.waitForDisplayed();
+    this.dropdownMenu.click();
+    browser.pause(1000);
+  }
+
+  clickDropdownMenuOption1() {
+    this.dropdownMenuOption1.waitForDisplayed();
+    this.dropdownMenuOption1.click();
+    browser.pause(1000);
+  }
+
+  clickDropdownMenuOption2() {
+    this.dropdownMenuOption2.waitForDisplayed();
+    this.dropdownMenuOption2.click();
+    browser.pause(1000);
   }
 }
 

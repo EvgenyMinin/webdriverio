@@ -79,6 +79,10 @@ class Internet {
     return $("#dropdown option:nth-child(3)");
   }
 
+  alertButton(index) {
+    return $(`.example li:nth-child(${index}) button`);
+  }
+
   figures(index) {
     return $(`.example .figure:nth-child(${index}) img`);
   }
@@ -233,6 +237,15 @@ class Internet {
     this.dropdownMenuOption2.waitForDisplayed();
     this.dropdownMenuOption2.click();
     browser.pause(1000);
+  }
+
+  /**
+   * Click the specified javascript alert
+   * @param {Number} index the index of the element
+   */
+  clickAlertButton(index) {
+    this.alertButton(index).waitForDisplayed();
+    this.alertButton(index).click();
   }
 }
 

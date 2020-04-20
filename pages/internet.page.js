@@ -35,6 +35,14 @@ class Internet {
     return $("#password");
   }
 
+  get inputTarget() {
+    return $(".example form input#target");
+  }
+
+  get keyResult() {
+    return $(".example #result");
+  }
+
   figures(index) {
     return $(`.example .figure:nth-child(${index}) img`);
   }
@@ -124,6 +132,29 @@ class Internet {
   getFigureDetailsText(index) {
     this.figureDetails(index).waitForDisplayed();
     return this.figureDetails(index).getText();
+  }
+
+  /**
+   * Click the target input field
+   */
+  clickInputTarget() {
+    this.inputTarget.waitForDisplayed();
+    this.inputTarget.click();
+  }
+
+  /**
+   * Send keyboard keys to Target
+   * @param {String} text The keyboard text to enter
+   */
+  sendKeysToTarget(text) {
+    this.inputTarget.waitForDisplayed();
+    this.inputTarget.keys(text);
+    browser.pause(1000);
+  }
+
+  getResultText() {
+    this.keyResult.waitForDisplayed();
+    return this.keyResult.getText();
   }
 }
 

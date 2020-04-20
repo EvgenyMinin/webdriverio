@@ -55,6 +55,18 @@ class Internet {
     return $("#tinymce");
   }
 
+  get draggable() {
+    return $("#draggable");
+  }
+
+  get droppable() {
+    return $("#droppable");
+  }
+
+  get droppableParagraph() {
+    return $("#droppable p");
+  }
+
   figures(index) {
     return $(`.example .figure:nth-child(${index}) img`);
   }
@@ -186,6 +198,11 @@ class Internet {
     this.iframeBody.clearValue();
     this.iframeBody.click();
     this.iframeBody.keys(text);
+  }
+
+  dragDraggableToDroppable() {
+    this.draggable.waitForDisplayed();
+    this.draggable.dragAndDrop(this.droppable);
   }
 }
 

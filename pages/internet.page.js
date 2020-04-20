@@ -35,6 +35,14 @@ class Internet {
     return $("#password");
   }
 
+  figures(index) {
+    return $(`.example .figure:nth-child(${index}) img`);
+  }
+
+  figureDetails(index) {
+    return $(`.example .figure:nth-child(${index}) .figcaption h5`);
+  }
+
   link(index) {
     return $(`ul li:nth-child(${index}) a`);
   }
@@ -97,6 +105,25 @@ class Internet {
     this.password.waitForDisplayed();
     this.password.setValue(value);
     browser.pause(1000);
+  }
+
+  /**
+   * Hovers over the specified image
+   * @param {Number} index the specific index of the image
+   */
+
+  hoverOnFigure(index) {
+    this.figures(index).waitForDisplayed();
+    this.figures(index).moveTo(1, 1);
+  }
+
+  /**
+   * Return the text of the figure details
+   * @param {Number} index of the element
+   */
+  getFigureDetailsText(index) {
+    this.figureDetails(index).waitForDisplayed();
+    return this.figureDetails(index).getText();
   }
 }
 

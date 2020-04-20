@@ -47,6 +47,14 @@ class Internet {
     return $(".example a");
   }
 
+  get iframe() {
+    return $("#mceu_27 #mce_0_ifr");
+  }
+
+  get iframeBody() {
+    return $("#tinymce");
+  }
+
   figures(index) {
     return $(`.example .figure:nth-child(${index}) img`);
   }
@@ -167,6 +175,17 @@ class Internet {
   clickHereLink() {
     this.hereLink.waitForDisplayed();
     this.hereLink.click();
+  }
+
+  /**
+   * Enter text in the iframe
+   * @param {String} text the text to be entered
+   */
+  sendTextToBody(text) {
+    this.iframeBody.waitForDisplayed();
+    this.iframeBody.clearValue();
+    this.iframeBody.click();
+    this.iframeBody.keys(text);
   }
 }
 

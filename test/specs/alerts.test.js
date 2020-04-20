@@ -25,6 +25,16 @@ describe("JS Alerts", () => {
     internetPage.clickAlertButton(2);
     browser.acceptAlert();
     assert.equal("You clicked: Ok", internetPage.getResultText());
-    browser.pause(1000);
+  });
+
+  it("Should send text to the alert", () => {
+    internetPage.clickAlertButton(3);
+    browser.sendAlertText("This is some text");
+    browser.acceptAlert();
+    assert.equal(
+      "You entered: This is some text",
+      internetPage.getResultText()
+    );
+    browser.pause(2000);
   });
 });

@@ -91,6 +91,10 @@ class Internet {
     return $(".example button");
   }
 
+  get pageButton() {
+    return $("#checkbox-example button");
+  }
+
   deleteButton(index) {
     return $(`#elements button:nth-child(${index})`);
   }
@@ -277,6 +281,11 @@ class Internet {
   clickDeleteButton(index) {
     this.deleteButton(index).waitForDisplayed();
     this.deleteButton(index).click();
+  }
+
+  clickPageButton() {
+    this.pageButton.waitForDisplayed();
+    this.pageButton.click();
   }
 }
 

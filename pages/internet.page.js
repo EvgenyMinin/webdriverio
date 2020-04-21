@@ -79,6 +79,14 @@ class Internet {
     return $("#dropdown option:nth-child(3)");
   }
 
+  get enableButton() {
+    return $("#input-example button");
+  }
+
+  get inputEnabledField() {
+    return $("#input-example input");
+  }
+
   alertButton(index) {
     return $(`.example li:nth-child(${index}) button`);
   }
@@ -246,6 +254,11 @@ class Internet {
   clickAlertButton(index) {
     this.alertButton(index).waitForDisplayed();
     this.alertButton(index).click();
+  }
+
+  clickEnableButton() {
+    this.enableButton.waitForDisplayed();
+    this.enableButton.click();
   }
 }
 

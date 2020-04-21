@@ -87,6 +87,14 @@ class Internet {
     return $("#input-example input");
   }
 
+  get addElementButton() {
+    return $(".example button");
+  }
+
+  deleteButton(index) {
+    return $(`#elements button:nth-child(${index})`);
+  }
+
   alertButton(index) {
     return $(`.example li:nth-child(${index}) button`);
   }
@@ -259,6 +267,16 @@ class Internet {
   clickEnableButton() {
     this.enableButton.waitForDisplayed();
     this.enableButton.click();
+  }
+
+  clickAddElementButton() {
+    this.addElementButton.waitForDisplayed();
+    this.addElementButton.click();
+  }
+
+  clickDeleteButton(index) {
+    this.deleteButton(index).waitForDisplayed();
+    this.deleteButton(index).click();
   }
 }
 
